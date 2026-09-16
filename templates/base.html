@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Peliplus - Django{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <div class="container py-4">
+        <header class="alert alert-info header-banner d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-3">
+                <img src="{% static 'imagenes/logo.png' %}" alt="Logo Peliplus" width="80" height="80">
+                <h1>Peliplus - Django</h1>
+            </div>
+        </header>
+
+        {% block contenido %}{% endblock %}
+    </div>
+
+    <footer>
+        <small>Reservado todos los derechos, 2026</small>
+    </footer>
+</body>
+</html>

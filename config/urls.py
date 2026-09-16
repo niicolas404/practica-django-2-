@@ -1,11 +1,8 @@
 
 from django.contrib import admin
-from django.urls import path
-
-from shop import views
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.inicio, name='inicio'),
-    path('detalle/', views.detalle, name='detalle'),
+    path('', include('shop.urls', namespace='shop')),
 ]

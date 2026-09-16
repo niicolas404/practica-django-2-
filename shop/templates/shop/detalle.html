@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{ pelicula.título }} - Detalle{% endblock %}
+
+{% block contenido %}
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+            <h2>{{ pelicula.título|upper }}</h2>
+            <p><strong>Género:</strong> {{ pelicula.genero|lower }}</p>
+            <p><strong>Duración:</strong> {{ pelicula.duracion|floatformat:0 }} min</p>
+            <p><strong>Director:</strong> {{ pelicula.director }}</p>
+            <p><strong>Año:</strong> {{ pelicula.año }}</p>
+            <p><strong>Sala:</strong> {{ pelicula.sala }}</p>
+            <p><strong>Horario:</strong> {{ pelicula.horario }}</p>
+            <p><strong>Sinopsis:</strong> {{ pelicula.sinopsis }}</p>
+
+            {% if pelicula.duracion >= 140 %}
+                <div class="alert alert-warning">Esta película tiene una duración larga, recomendada para una experiencia completa.</div>
+            {% endif %}
+
+            <a href="{% url 'shop:inicio' %}" class="btn btn-secondary mt-3">Volver a la portada</a>
+        </div>
+    </div>
+{% endblock %}

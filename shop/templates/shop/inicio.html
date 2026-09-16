@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block titulo %}Peliplus - Inicio{% endblock %}
 
 {% block contenido %}
-    <div class="text-center mb-4">
-        <h2 class="mb-2">Cartelera</h2>
-        <p class="mb-0">Total de películas: {{ peliculas|length }}</p>
+    <div class="mb-4">
+        <h2>Cartelera</h2>
+        <p>Total de películas: {{ peliculas|length }}</p>
     </div>
 
     {% if peliculas %}
-        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+        <div class="row g-3">
             {% for pelicula in peliculas %}
-                <div class="col">
-                    <div class="card pelicula-card h-100">
-                        <img src="{% static pelicula.imagen %}" alt="{{ pelicula.título }}">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title">{{ pelicula.título|upper }}</h5>
                             <p class="card-text"><strong>Género:</strong> {{ pelicula.genero|lower }}</p>
@@ -25,12 +23,10 @@
                     </div>
                 </div>
             {% empty %}
-                <div class="col-12">
-                    <div class="alert alert-warning text-center">No hay películas disponibles.</div>
-                </div>
+                <div class="alert alert-warning">No hay películas disponibles.</div>
             {% endfor %}
         </div>
     {% else %}
-        <div class="alert alert-warning text-center">No hay películas disponibles.</div>
+        <div class="alert alert-warning">No hay películas disponibles.</div>
     {% endif %}
 {% endblock %}
